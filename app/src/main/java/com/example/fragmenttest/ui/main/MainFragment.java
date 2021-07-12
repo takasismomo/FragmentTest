@@ -38,19 +38,11 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         // TODO: Use the ViewModel
-        button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mViewModel.str = "Pushed!";
-                textView.setText(mViewModel.str);
-            }
-        });
 
-
-    }
-
+        }
 }
