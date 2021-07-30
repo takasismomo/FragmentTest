@@ -1,5 +1,7 @@
 package com.example.fragmenttest.ui.main;
 
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -19,7 +21,6 @@ import com.example.fragmenttest.R;
 
 public class MainFragment extends Fragment {
 
-    private MainViewModel mViewModel;
     private TextView textView;
     private Button button;
 
@@ -32,8 +33,6 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View view=inflater.inflate(R.layout.main_fragment, container, false);
-        textView= view.findViewById(R.id.message);
-        button= view.findViewById(R.id.button);
         return view;
     }
 
@@ -41,7 +40,7 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        MainViewModel mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         // TODO: Use the ViewModel
 
         }
