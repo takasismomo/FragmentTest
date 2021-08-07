@@ -1,5 +1,6 @@
 package com.example.fragmenttest.ui.main;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -12,12 +13,13 @@ import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.fragmenttest.MainActivity;
 import com.example.fragmenttest.R;
+import com.example.fragmenttest.databinding.MainFragmentBinding;
 
 public class MainFragment extends Fragment {
 
@@ -32,7 +34,10 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        final View view=inflater.inflate(R.layout.main_fragment, container, false);
+        MainFragmentBinding binding = DataBindingUtil.inflate(inflater,R.layout.main_fragment, container,false);
+//        final View view = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false);
+//        return view;
+        View view = binding.getRoot();
         return view;
     }
 
