@@ -7,17 +7,18 @@ import androidx.lifecycle.ViewModel;
 public class MainViewModel<str> extends ViewModel {
     // TODO: Implement the ViewModel
     boolean flagButton;
-    private MutableLiveData<String> str;
+    private MutableLiveData<String> mstr;
+    public LiveData<String> str;
 
-    public LiveData<String> init(){
-        str = new MutableLiveData<>();
-        str.postValue("Push!");
-        return str;
+    public void init(){
+        mstr= new MutableLiveData<String>();
+        mstr.setValue("Push the Button!");
+
     }
 
-    public LiveData<String> button(){
-        str.setValue("Pushed!");
-        return str;
+    public void onClick(){
+        mstr.setValue("Pushed!");
+        str = this.mstr;
     }
 
 }

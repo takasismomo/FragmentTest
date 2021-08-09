@@ -23,12 +23,10 @@ import com.example.fragmenttest.databinding.MainFragmentBinding;
 
 public class MainFragment extends Fragment {
 
-    private TextView textView;
-    private Button button;
-
     public static MainFragment newInstance() {
         return new MainFragment();
     }
+    private MainViewModel viewModel=new ViewModelProvider(this).get(MainViewModel.class);
 
     @Nullable
     @Override
@@ -37,16 +35,17 @@ public class MainFragment extends Fragment {
         MainFragmentBinding binding = DataBindingUtil.inflate(inflater,R.layout.main_fragment, container,false);
 //        final View view = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false);
 //        return view;
-        View view = binding.getRoot();
-        return view;
+        binding.setLifecycleOwner(getViewLifecycleOwner());
+        binding.setViewModel(viewModel);
+        viewModel.init();
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        MainViewModel mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+//        MainViewModel ViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         // TODO: Use the ViewModel
-
         }
 }
