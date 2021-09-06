@@ -22,13 +22,18 @@ public class MainFragment extends Fragment {
     }
 
     private MainFragmentBinding binding;
+    private MainViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
+        viewModel=new ViewModelProvider(requireActivity()).get(MainViewModel.class);
         binding = DataBindingUtil.inflate(inflater,R.layout.main_fragment, container,false);
+        binding.setLifecycleOwner(getViewLifecycleOwner());
+        binding.setViewModel(viewModel);
+        viewModel.init();
         return binding.getRoot();
     }
 
@@ -36,10 +41,7 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        MainViewModel viewModel=new ViewModelProvider(requireActivity()).get(MainViewModel.class);
-        binding.setLifecycleOwner(getViewLifecycleOwner());
-        binding.setViewModel(viewModel);
-        viewModel.init();
+//        viewModel.init();
 
         // TODO: Use the ViewModel
         }
