@@ -41,8 +41,6 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull @org.jetbrains.annotations.NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        viewModel.init();
-
         // TODO: Use the ViewModel
         }
 }

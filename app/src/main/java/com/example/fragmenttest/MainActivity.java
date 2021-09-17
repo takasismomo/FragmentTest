@@ -10,9 +10,10 @@ import android.os.Binder;
 import android.os.Bundle;
 
 import com.example.fragmenttest.ui.main.MainFragment;
+import com.example.fragmenttest.ui.main.SettingsFragment;
 
 public class MainActivity extends FragmentActivity {
-    private static final int NUM_PAGES=5;
+    private static final int NUM_PAGES=2;
     private ViewPager2 viewPager;
     private FragmentStateAdapter pagerAdapter;
 
@@ -29,5 +30,27 @@ public class MainActivity extends FragmentActivity {
                     .replace(R.id.container, MainFragment.newInstance())
                     .commitNow();
         } */
+    }
+
+    private class ScreenSlidePagerAdapter extends FragmentStateAdapter{
+        public ScreenSlidePagerAdapter(FragmentActivity fa){
+            super(fa);
+        }
+
+        @Override
+        public Fragment createFragment(int position){
+            switch (position){
+                case 0:
+                    return new MainFragment();
+                case 1:
+                    return new SettingsFragment();
+            }
+            return new MainFragment();
+        }
+
+        @Override
+        public int getItemCount(){
+            return NUM_PAGES;
+        }
     }
 }
